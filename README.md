@@ -251,7 +251,9 @@ Proyecto desarrollado - NodeJs Developer Test 2018
  * #### Ejecución de la Aplicación Web:
  
   Si la ejecución del Servidor y Aplicación NodeJS ha sido exitosa, podremos acceder a la siguiente URL para acceder a la aplicación web:
- 
+  
+  La aplicación web actualizará la vista de manera automática por cada hora.
+  
   * URL: http://127.0.0.1:9000
   
   ![alt text](https://github.com/jtrujilloh/NodeJS-ReignDesign-Test/blob/master/Imagenes/012-VerificacionAplicacionWeb-01.JPG)
