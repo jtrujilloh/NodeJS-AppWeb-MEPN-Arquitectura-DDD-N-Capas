@@ -13,9 +13,9 @@
 		"Options": {
 			"useMongoClient": true,
 			"autoIndex": false,
-      "reconnectInterval": 500,
-      "poolSize": 10,
-      "bufferMaxEntries": 0
+			"reconnectInterval": 500,
+			"poolSize": 10,
+			"bufferMaxEntries": 0
 		}
 	}
 }

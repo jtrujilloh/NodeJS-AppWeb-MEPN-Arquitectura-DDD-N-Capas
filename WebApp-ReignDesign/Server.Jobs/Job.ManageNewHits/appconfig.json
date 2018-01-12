@@ -9,9 +9,9 @@
 		"Options": {
 			"useMongoClient": true,
 			"autoIndex": false,
-      "reconnectInterval": 500,
-      "poolSize": 40,
-      "bufferMaxEntries": 0
+			"reconnectInterval": 500,
+			"poolSize": 40,
+			"bufferMaxEntries": 0
 		}
 	},
 	"LogProperties": {
