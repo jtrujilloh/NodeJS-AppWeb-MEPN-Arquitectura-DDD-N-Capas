@@ -1,0 +1,1 @@
+"C:\Program Files\MongoDB\Server\3.2\bin\mongod.exe" --port 27017 --dbpath C:\mongodb\data\reign-design-db

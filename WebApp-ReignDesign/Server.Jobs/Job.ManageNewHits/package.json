@@ -1,0 +1,21 @@
+{
+  "name": "Job.Schedule.ManageNewHits",
+  "version": "1.0.0",
+  "description": "Task de Administración de Nuevos Post Publicados - ReignDesign",
+  "main": "Job.Schedule.ManageNewHits.js",
+  "scripts": {
+    "test": ""
+  },
+  "author": "José Alfredo Trujillo Hidalgo",
+  "license": "GPL-3.0",
+  "dependencies": {
+    "async": "^2.1.5",
+    "axios": "^0.17.1",
+    "date-and-time": "^0.5.0",
+    "format-currency": "^1.0.0",
+    "log4js": "^1.1.1",
+    "mongoose": "^4.7.0",
+    "node-datetime": "^2.0.0",
+    "node-schedule": "^1.2.4"
+  }
+}

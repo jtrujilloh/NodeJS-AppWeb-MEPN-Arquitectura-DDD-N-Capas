@@ -1,0 +1,21 @@
+{
+  "name": "NodeJS.Servidor.ReignDesign",
+  "version": "1.0.0",
+  "description": "Servidor NodeJS - API REST - ReignDesign",
+  "main": "ServerExpress.js",
+  "scripts": {},
+  "keywords": [],
+  "author": "José Alfredo Trujillo Hidalgo",
+  "license": "GPL-3.0",
+  "dependencies": {
+    "axios": "^0.17.1",
+    "body-parser": "^1.17.2",
+    "cors": "^2.8.4",
+    "date-and-time": "^0.5.0",
+    "express": "^4.15.3",
+    "helmet": "^3.9.0",
+    "log4js": "^1.0.1",
+    "mongoose": "^4.7.0",
+    "pug": "^2.0.0-rc.4"
+  }
+}

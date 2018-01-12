@@ -1,0 +1,21 @@
+{
+	"Server":{
+		"IP": "127.0.0.1",
+		"Port": 9000,
+		"ParametersOnGetRequestLimit": 1,
+		"BandwidthLimit": "100mb",
+		"Extended": true
+	},
+	"MongoDBServer": {
+		"IP": "mongodb://127.0.0.1",
+		"PORT": 27017,
+		"BBDD": "reign-design",
+		"Options": {
+			"useMongoClient": true,
+			"autoIndex": false,
+      "reconnectInterval": 500,
+      "poolSize": 10,
+      "bufferMaxEntries": 0
+		}
+	}
+}

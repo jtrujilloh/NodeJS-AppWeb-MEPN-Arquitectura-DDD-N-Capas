@@ -1,0 +1,8 @@
+WebApp-ReignDesign/logs/*.log
+
+WebApp-ReignDesign/Server.Jobs/Job.ManageNewHits/node_modules/
+
+WebApp-ReignDesign/Server.Rest/Logs/*.log
+WebApp-ReignDesign/Server.Rest/node_modules/
+
+WebApp-ReignDesign/Server.Rest/Server.Services/Servicio.GestionPosts/node_modules/
