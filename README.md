@@ -1,17 +1,78 @@
-# NodeJS-ReignDesign-Test
+[By José Alfredo Trujillo Hidalgo]
 
-Proyecto NodeJS que se compone de tres soluciones interoperables entre sí, de muy fácil despliegue y configuración, pero con una arquitectura robusta y mantenible por equipos o personas independientes. 
+# NodeJs Developer Test 11-01-2018
+
+Proyecto NodeJS que se compone de tres soluciones interoperables entre sí, de muy fácil despliegue y configuración, pero con una arquitectura robusta y con posibilidades de ser mantenible por equipos o personas independientes. 
 
 * Se componen de: 
   * Aplicación Web.
+    * Utiliza el motor de plantillas PUG (Compila archivos *.pug a formato HTML en tiempo de ejecución y renderizado)
   * Api REST.
     * Módulo desarrollado con arquitectura de N-Capas orientado al dominio.
   * Jobs (programables de ejecución independiente a toda la aplicación). 
     * módulo desarrollado con arquitectura de N-Capas orientado al dominio.
-  
-Proyecto desarrollado - NodeJs Developer Test 2018 
 
-[By José Alfredo Trujillo Hidalgo]
+-------------------------------------------
+
+* ### Tiempo de Implementación / Despliegue:
+
+  Considerando que se tiene NodeJS y MongoDB instalado, el tiempo de implementación es de 5 minutos aproximadamente, sin contar el tiempo que toma la instalación de los paquetes de npm necesarios para cada componente, ya que esto varía según la conexión a internet que se disponga.
+  
+-------------------------------------------
+
+* ### Tecnologías Utilizadas:
+
+  * NodeJS.
+  * Express.
+  * Pug Template Engine.
+  * Bootstrap.
+  * Material Icons (Material Design)
+  * MongoDB.
+  * Job Scheduler.
+
+-------------------------------------------
+
+* ### Paquetes npm utilizados:
+
+  * async v2.1.5
+  * axios v0.17.1
+  * date-and-time v0.5.0
+  * log4js v1.1.1
+  * mongoose v4.7.0
+  * node-schedule v1.2.4
+  * cors v2.8.4
+  * express v4.15.3
+  * helmet v3.9.0
+  * pug v2.0.0-rc.4
+  * lodash v4.17.4
+
+-------------------------------------------
+
+* ### Contexto del Desarrollo:
+
+  Pequeño desarrollo web que expone diversos conceptos básicos sobre el desarrollo de una aplicación web 100% NodeJS, construido en base a una arquitectura de desarrollo y diseño orientado al dominio, basado en un patrón de N-Capas DDD (Domain-Driven-Design), en donde el dominio es lo más importante de una aplicación, utilizando las tecnologías mencionadas anteriormente.
+  
+  Cita: "En este tipo de diseño orientado al dominio, lo dependiente de la tecnología reside en el exterior como si capas de una cebolla fueran, donde podemos sustituir una capa por otra, utilizando otra tecnología, y la funcionalidad de la aplicación no se ve comprometida" [link a la Fuente!](http://xurxodeveloper.blogspot.cl/2014/01/ddd-la-logica-de-dominio-es-el-corazon.html).
+  
+  Se aclara también que en este desarrollo se ha dejado de lado intencionalmente lo relacionado a seguridad SSL, Token o encriptación.
+  
+  La aplicación, internamente, y, una vez por minuto, se conecta a una API que entrega una lista de mensajes recientemente publicados:
+  
+  Api: http://hn.algolia.com/api/v1/search_by_date?query=nodejs
+  
+  Esta tarea la ejecuta un job programado para tal fin, donde obtiene los datos, procesa la información y deposita los datos necesarios en la base de datos MongoDB.
+  
+  El intervalo de ejecución del job puede ser modificado según se explica más adelante. (Se recomienda modificar dicho intervalo a un valor de 1 Hora).
+  
+  Por otro lado, la aplicación web, actualiza su vista de forma automática una vez por hora, actualizando el front-end automáticamente por cada hora.
+  
+  El usuario puede visualizar una página web en donde se muestran todas las publicaciones más recientes en orden de la fecha más actual, hasta la fecha más antigua.
+  
+  Cada publicación de la lista puede eliminarse de forma independiente, la eliminación no es física, es una eliminación lógica, dado a que no poseemos control sobre los datos que provee la API, de esta forma mantenemos el registro en base de datos a pesar que no se muestre en la página web pudiendo filtrar las publicaciones activas para nuestro desarrollo.
+  
+  Las fechas de las publicaciones fueron tratadas con un componente o módulo NodeJS que permite presentar los campos de fecha de una forma más entendible y bonita para la aplicación web.
+  
+  Además es posible seleccionar una publicación y ver su contenido en una nueva pestaña del navegador.
 
 -------------------------------------------
 
@@ -23,9 +84,9 @@ Proyecto desarrollado - NodeJs Developer Test 2018
   * npm v5.4.1 x86 (o Superior)
   * MongoDB v3.2.11 [mongodb-win32-x86_64-2008plus-ssl-3.2.11-signed.msi] (o Superior)
   
-  ![alt text](https://github.com/jtrujilloh/NodeJS-ReignDesign-Test/blob/master/Imagenes/001-RequisitosSoftware.JPG)
+  ![001-RequisitosSoftware.JPG](https://github.com/jtrujilloh/NodeJS-ReignDesign-Test/blob/master/Imagenes/001-RequisitosSoftware.JPG)
   
-  ![alt text](https://github.com/jtrujilloh/NodeJS-ReignDesign-Test/blob/master/Imagenes/002-RequisitosSoftware.JPG)
+  ![002-RequisitosSoftware.JPG](https://github.com/jtrujilloh/NodeJS-ReignDesign-Test/blob/master/Imagenes/002-RequisitosSoftware.JPG)
   
  -------------------------------------------
 
@@ -33,7 +94,7 @@ Proyecto desarrollado - NodeJs Developer Test 2018
   
   lo siguiente, explica cómo se compone la arquitectura del proyecto, y para qué sirve cada componente.
   
-  ![alt text](https://github.com/jtrujilloh/NodeJS-ReignDesign-Test/blob/master/Imagenes/003-EstructuraDirectorios.JPG)
+  ![003-EstructuraDirectorios.JPG](https://github.com/jtrujilloh/NodeJS-ReignDesign-Test/blob/master/Imagenes/003-EstructuraDirectorios.JPG)
   
   * WebApp-ReignDesign\logs: 
     * Almacena los archivos de logs provenientes de las ejecuciones del Job y de Servidor de Aplicaciones y Rest.
@@ -188,13 +249,13 @@ Proyecto desarrollado - NodeJs Developer Test 2018
   * 3: Iniciar el servidor de Base de Datos, ejecutando el siguiente archivo:
     * WebApp-ReignDesign\Start.MongoDB.Server.bat
     
-    ![alt text](https://github.com/jtrujilloh/NodeJS-ReignDesign-Test/blob/master/Imagenes/004-EjecucionServidorMongo.JPG)
+    ![004-EjecucionServidorMongo.JPG](https://github.com/jtrujilloh/NodeJS-ReignDesign-Test/blob/master/Imagenes/004-EjecucionServidorMongo.JPG)
   
   * 4: (Opcional) Iniciar el cliente de Base de Datos, ejecutando el siguiente archivo:
     * WebApp-ReignDesign\Start.MongoDB.Client.bat
     * El cliente se conectará a nuestra base de datos, y podremos ver las bases de datos existentes:
     
-    ![alt text](https://github.com/jtrujilloh/NodeJS-ReignDesign-Test/blob/master/Imagenes/005-EjecucionClienteMongo.JPG)
+    ![005-EjecucionClienteMongo.JPG](https://github.com/jtrujilloh/NodeJS-ReignDesign-Test/blob/master/Imagenes/005-EjecucionClienteMongo.JPG)
   
     * Podremos observar que no existe base de datos más que la existente por defecto.
   
@@ -209,18 +270,18 @@ Proyecto desarrollado - NodeJs Developer Test 2018
       * WebApp-ReignDesign\Start.Automatic.bat: 
         * Esto iniciará toda la aplicación en una única consola.
            
-    ![alt text](https://github.com/jtrujilloh/NodeJS-ReignDesign-Test/blob/master/Imagenes/006-EjecucionAplicacionUnicaInstancia.JPG)
+    ![006-EjecucionAplicacionUnicaInstancia.JPG](https://github.com/jtrujilloh/NodeJS-ReignDesign-Test/blob/master/Imagenes/006-EjecucionAplicacionUnicaInstancia.JPG)
     
     * 1.2: (Opcional) O bien, Podremos ejecutar los siguientes archivos para iniciar las instancias de la aplicación NodeJS por separado:
       * WebApp-ReignDesign\JOBS - Start.Automatic.bat
         * Sólo iniciará el Job programado de forma independiente a la aplicación.
         
-        ![alt text](https://github.com/jtrujilloh/NodeJS-ReignDesign-Test/blob/master/Imagenes/007-EjecucionJob.JPG)
+        ![007-EjecucionJob.JPG](https://github.com/jtrujilloh/NodeJS-ReignDesign-Test/blob/master/Imagenes/007-EjecucionJob.JPG)
         
       * WebApp-ReignDesign\REST - Start.Automatic.bat
         * Sólo iniciará la Aplicación Web y API Rest independiente del Job programado.
         
-        ![alt text](https://github.com/jtrujilloh/NodeJS-ReignDesign-Test/blob/master/Imagenes/008-EjecucionRestWebApp.JPG)
+        ![008-EjecucionRestWebApp.JPG](https://github.com/jtrujilloh/NodeJS-ReignDesign-Test/blob/master/Imagenes/008-EjecucionRestWebApp.JPG)
         
   * #### IMPORTANTE: 
   
@@ -228,13 +289,13 @@ Proyecto desarrollado - NodeJs Developer Test 2018
     
     * Para poblar la base de datos, sólo debe esperar 1 minuto (que es el intervalo de tiempo configurado para la ejecución recurrente del Job) una vez iniciada la aplicación.
       
-      ![alt text](https://github.com/jtrujilloh/NodeJS-ReignDesign-Test/blob/master/Imagenes/009-PobladoBaseDatos.JPG)
+      ![009-PobladoBaseDatos.JPG](https://github.com/jtrujilloh/NodeJS-ReignDesign-Test/blob/master/Imagenes/009-PobladoBaseDatos.JPG)
       
     * Siempre se debe ejecutar estas acciones, teniendo ya en ejecución el servidor de Base de Datos MongoDB.
           
     * Después de 1 minuto, podremos verificar la base de datos mediante el cliente de mongo, la existencia y los datos de la misma:
     
-      ![alt text](https://github.com/jtrujilloh/NodeJS-ReignDesign-Test/blob/master/Imagenes/010-VerificacionBaseDatos.JPG)
+      ![010-VerificacionBaseDatos.JPG](https://github.com/jtrujilloh/NodeJS-ReignDesign-Test/blob/master/Imagenes/010-VerificacionBaseDatos.JPG)
  
 -------------------------------------------
  
@@ -244,7 +305,7 @@ Proyecto desarrollado - NodeJs Developer Test 2018
   
   * URL: http://127.0.0.1:9000/obtenerPosts
   
-  ![alt text](https://github.com/jtrujilloh/NodeJS-ReignDesign-Test/blob/master/Imagenes/011-VerificacionApiREST.JPG)
+  ![011-VerificacionApiREST.JPG](https://github.com/jtrujilloh/NodeJS-ReignDesign-Test/blob/master/Imagenes/011-VerificacionApiREST.JPG)
   
 -------------------------------------------
   
@@ -256,16 +317,16 @@ Proyecto desarrollado - NodeJs Developer Test 2018
   
   * URL: http://127.0.0.1:9000
   
-  ![alt text](https://github.com/jtrujilloh/NodeJS-ReignDesign-Test/blob/master/Imagenes/012-VerificacionAplicacionWeb-01.JPG)
+  ![012-VerificacionAplicacionWeb-01.JPG](https://github.com/jtrujilloh/NodeJS-ReignDesign-Test/blob/master/Imagenes/012-VerificacionAplicacionWeb-01.JPG)
   
-  ![alt text](https://github.com/jtrujilloh/NodeJS-ReignDesign-Test/blob/master/Imagenes/012-VerificacionAplicacionWeb-02.JPG)
+  ![012-VerificacionAplicacionWeb-02.JPG](https://github.com/jtrujilloh/NodeJS-ReignDesign-Test/blob/master/Imagenes/012-VerificacionAplicacionWeb-02.JPG)
   
-  ![alt text](https://github.com/jtrujilloh/NodeJS-ReignDesign-Test/blob/master/Imagenes/012-VerificacionAplicacionWeb-03.JPG)
+  ![012-VerificacionAplicacionWeb-03.JPG](https://github.com/jtrujilloh/NodeJS-ReignDesign-Test/blob/master/Imagenes/012-VerificacionAplicacionWeb-03.JPG)
   
-  ![alt text](https://github.com/jtrujilloh/NodeJS-ReignDesign-Test/blob/master/Imagenes/012-VerificacionAplicacionWeb-04.JPG)
+  ![012-VerificacionAplicacionWeb-04.JPG](https://github.com/jtrujilloh/NodeJS-ReignDesign-Test/blob/master/Imagenes/012-VerificacionAplicacionWeb-04.JPG)
   
-  ![alt text](https://github.com/jtrujilloh/NodeJS-ReignDesign-Test/blob/master/Imagenes/012-VerificacionAplicacionWeb-05.JPG)
+  ![012-VerificacionAplicacionWeb-05.JPG](https://github.com/jtrujilloh/NodeJS-ReignDesign-Test/blob/master/Imagenes/012-VerificacionAplicacionWeb-05.JPG)
   
-  ![alt text](https://github.com/jtrujilloh/NodeJS-ReignDesign-Test/blob/master/Imagenes/012-VerificacionAplicacionWeb-06.JPG)
+  ![012-VerificacionAplicacionWeb-06.JPG](https://github.com/jtrujilloh/NodeJS-ReignDesign-Test/blob/master/Imagenes/012-VerificacionAplicacionWeb-06.JPG)
   
 -------------------------------------------
