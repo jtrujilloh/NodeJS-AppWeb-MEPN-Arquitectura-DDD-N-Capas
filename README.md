@@ -56,7 +56,7 @@ Proyecto NodeJS que se compone de tres soluciones interoperables entre sí, de m
   
   Se aclara también que en este desarrollo se ha dejado de lado intencionalmente lo relacionado a seguridad SSL, Token, encriptación y seguridad de base de datos.
   
-  La aplicación, internamente, y, una vez por minuto, se conecta a una API que entrega una lista de mensajes recientemente publicados:
+  La aplicación job schedule, internamente, y, una vez por minuto, se conecta a una API que entrega una lista de mensajes recientemente publicados:
   
   Api: http://hn.algolia.com/api/v1/search_by_date?query=nodejs
   
