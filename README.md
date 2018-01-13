@@ -54,7 +54,7 @@ Proyecto NodeJS que se compone de tres soluciones interoperables entre sí, de m
   
   Cita: "En este tipo de diseño orientado al dominio, lo dependiente de la tecnología reside en el exterior como si capas de una cebolla fueran, donde podemos sustituir una capa por otra, utilizando otra tecnología, y la funcionalidad de la aplicación no se ve comprometida" [link a la Fuente!](http://xurxodeveloper.blogspot.cl/2014/01/ddd-la-logica-de-dominio-es-el-corazon.html).
   
-  Se aclara también que en este desarrollo se ha dejado de lado intencionalmente lo relacionado a seguridad SSL, Token o encriptación.
+  Se aclara también que en este desarrollo se ha dejado de lado intencionalmente lo relacionado a seguridad SSL, Token, encriptación y seguridad de base de datos.
   
   La aplicación, internamente, y, una vez por minuto, se conecta a una API que entrega una lista de mensajes recientemente publicados:
   
