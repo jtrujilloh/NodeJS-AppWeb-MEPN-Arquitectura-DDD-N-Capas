@@ -121,6 +121,23 @@ Proyecto NodeJS que se compone de tres soluciones interoperables entre sí, de m
   * WebApp-ReignDesign\Server.Jobs\Job.ManageNewHits\Job.Schedule.Config.js:
     * Contiene la configuración de parámetros de intervalos de tiempo en que se ejecutará el job, actualmente está configurado para ejecutarse una vez por cada minuto, asimismo se puede configurar para que se ejecute en el horario que se necesite.
     
+    ```bash
+    ...\NodeJS-ReignDesign-Test\WebApp-ReignDesign\Server.Jobs\Job.ManageNewHits\Job.Schedule.Config.js
+    ```
+    ```js
+    const schedule = require('node-schedule');
+
+    exports.getRule_JobManageNewHits= getRule_JobManageNewHits;
+
+    function getRule_JobManageNewHits(){
+      let rule = new schedule.RecurrenceRule();
+      //rule.hour = 0; // Hora en que se ejecutará, si está en cero, sólo aplica minutos y/o segundos...
+      //rule.minute = 0; // Minuto 0 de cada Hora...
+      rule.second = 0; // Segundo 0 (cero) de cada Minuto...
+      return rule;
+    };
+    ```
+    
   * WebApp-ReignDesign\Server.Jobs\Job.ManageNewHits\Job.Schedule.ManageNewHits.js:
     * Ejecutable del job.
     
@@ -226,9 +243,11 @@ Proyecto NodeJS que se compone de tres soluciones interoperables entre sí, de m
   
     * \WebApp-ReignDesign\Server.Jobs\Job.ManageNewHits\
       Este proyecto es un Job programable, el cual se puede ejecutar de forma independiente a la aplicación
+      
       ```bash
       C:\...> npm install --save
       ```
+      
       Este comando instalará todas las dependencias necesarias para poder ejecutar el Job.
       
       
@@ -237,7 +256,7 @@ Proyecto NodeJS que se compone de tres soluciones interoperables entre sí, de m
       ```bash
       C:\...> npm install --save
       ```
-    Este comando instalará todas las dependencias necesarias por el módulo de servicio de negocio.
+      Este comando instalará todas las dependencias necesarias por el módulo de servicio de negocio.
     
     
     * \WebApp-ReignDesign\Server.Rest\
@@ -245,6 +264,7 @@ Proyecto NodeJS que se compone de tres soluciones interoperables entre sí, de m
       ```bash
       C:\...> npm install --save
       ```
+      
       Este comando instalará todas las dependencias necesarias para poder ejecutar el servidor NodeJS.
 
 -------------------------------------------
