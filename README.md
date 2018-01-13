@@ -100,6 +100,7 @@ Proyecto NodeJS que se compone de tres soluciones interoperables entre sí, de m
   * WebApp-ReignDesign\logs: 
     * Almacena los archivos de logs provenientes de las ejecuciones del Job y de Servidor de Aplicaciones y Rest.
 
+-------------------------------------------
 
 * #### Job: Estructura y Descripción de Directorios:
 
@@ -141,7 +142,8 @@ Proyecto NodeJS que se compone de tres soluciones interoperables entre sí, de m
   * WebApp-ReignDesign\Server.Jobs\Job.ManageNewHits\Job.Schedule.ManageNewHits.js:
     * Ejecutable del job.
     
-    
+-------------------------------------------
+
 * #### REST y WebApplication Server: Estructura y Descripción de Directorios:
   
 ![003-EstructuraDirectorios-02-Rest.JPG](https://github.com/jtrujilloh/NodeJS-ReignDesign-Test/blob/master/Imagenes/003-EstructuraDirectorios-02-Rest.JPG)
@@ -152,10 +154,10 @@ Proyecto NodeJS que se compone de tres soluciones interoperables entre sí, de m
   * WebApp-ReignDesign\Server.Rest\Server.Services:
     * Contiene los proyectos desarrollado como módulos NodeJS, proveen la lógica de Negocio en forma modular.
 
-![003-EstructuraDirectorios-03-ServiceModule.JPG](https://github.com/jtrujilloh/NodeJS-ReignDesign-Test/blob/master/Imagenes/003-EstructuraDirectorios-03-ServiceModule.JPG)
-
   * WebApp-ReignDesign\Server.Rest\Server.Services\Servicio.GestionPosts:
     * Contiene el módulo NodeJS de servicio de negocio que gestiona todo lo relacionado a la interacción y el comportamiento referente a un negocio específico (en este caso, el módulo gestiona los posts existentes en base de datos, módulo desarrollado con arquitectura de N-Capas orientado al dominio.
+    
+    ![003-EstructuraDirectorios-03-ServiceModule.JPG](https://github.com/jtrujilloh/NodeJS-ReignDesign-Test/blob/master/Imagenes/003-EstructuraDirectorios-03-ServiceModule.JPG)
     
   * WebApp-ReignDesign\Server.Rest\Server.Services\Servicio.GestionPosts\Service.BLL:
     * Capa Lógica de Negocio.
@@ -180,11 +182,6 @@ Proyecto NodeJS que se compone de tres soluciones interoperables entre sí, de m
   
   * WebApp-ReignDesign\Server.Rest\Server.Util:
     * Objetos de literales para el servidor NodeJS.
-    
-![003-EstructuraDirectorios-04-WebApp.JPG](https://github.com/jtrujilloh/NodeJS-ReignDesign-Test/blob/master/Imagenes/003-EstructuraDirectorios-04-WebApp.JPG)
-
-  * WebApp-ReignDesign\Server.Rest\webApp:
-    * Contiene todos los objetos estáticos y dinámicos utilizados para renderizar la aplicación web.
   
   * WebApp-ReignDesign\Server.Rest\appconfig.json:
     * Contiene la configuración de parámetros del Servidor de Aplicaciones y Rest, aquí se puede configurar:
@@ -193,7 +190,14 @@ Proyecto NodeJS que se compone de tres soluciones interoperables entre sí, de m
       
   * WebApp-ReignDesign\Server.Rest\ServerExpress.js:
     * Ejecutable de Servidor Rest y Web Application. 
+    
+-------------------------------------------
 
+  * WebApp-ReignDesign\Server.Rest\webApp:
+    * Contiene todos los objetos estáticos y dinámicos utilizados para renderizar la aplicación web.
+  
+  ![003-EstructuraDirectorios-04-WebApp.JPG](https://github.com/jtrujilloh/NodeJS-ReignDesign-Test/blob/master/Imagenes/003-EstructuraDirectorios-04-WebApp.JPG)
+  
 
 * #### Ejecución de la Aplicación - Descripción de Archivos:
 
@@ -280,11 +284,19 @@ Proyecto NodeJS que se compone de tres soluciones interoperables entre sí, de m
   * 3: Iniciar el servidor de Base de Datos, ejecutando el siguiente archivo:
     * WebApp-ReignDesign\Start.MongoDB.Server.bat
     
+    ```bash
+    "C:\Program Files\MongoDB\Server\3.2\bin\mongod.exe" --port 27017 --dbpath C:\mongodb\data\reign-design-db
+    ```
+    
     ![004-EjecucionServidorMongo.JPG](https://github.com/jtrujilloh/NodeJS-ReignDesign-Test/blob/master/Imagenes/004-EjecucionServidorMongo.JPG)
   
   * 4: (Opcional) Iniciar el cliente de Base de Datos, ejecutando el siguiente archivo:
     * WebApp-ReignDesign\Start.MongoDB.Client.bat
     * El cliente se conectará a nuestra base de datos, y podremos ver las bases de datos existentes:
+    
+    ```bash
+    "C:\Program Files\MongoDB\Server\3.2\bin\mongo.exe"
+    ```
     
     ![005-EjecucionClienteMongo.JPG](https://github.com/jtrujilloh/NodeJS-ReignDesign-Test/blob/master/Imagenes/005-EjecucionClienteMongo.JPG)
   
