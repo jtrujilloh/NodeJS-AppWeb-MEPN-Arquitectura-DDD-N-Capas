@@ -27,6 +27,7 @@ Proyecto NodeJS que se compone de tres soluciones interoperables entre sí, de m
   * Pug Template Engine.
   * Bootstrap.
   * Material Icons (Material Design)
+  * SweetAlert2
   * MongoDB.
   * Job Scheduler.
 
@@ -102,6 +103,8 @@ Proyecto NodeJS que se compone de tres soluciones interoperables entre sí, de m
 
 * #### Job: Estructura y Descripción de Directorios:
 
+![003-EstructuraDirectorios-01-Jobs.JPG](https://github.com/jtrujilloh/NodeJS-ReignDesign-Test/blob/master/Imagenes/003-EstructuraDirectorios-01-Jobs.JPG)
+
   * WebApp-ReignDesign\Server.Jobs: 
     * Contiene el proyecto desarrollado como Job ejecutable según una frecuencia de horario configurada.
     
@@ -118,18 +121,39 @@ Proyecto NodeJS que se compone de tres soluciones interoperables entre sí, de m
   * WebApp-ReignDesign\Server.Jobs\Job.ManageNewHits\Job.Schedule.Config.js:
     * Contiene la configuración de parámetros de intervalos de tiempo en que se ejecutará el job, actualmente está configurado para ejecutarse una vez por cada minuto, asimismo se puede configurar para que se ejecute en el horario que se necesite.
     
+    ```bash
+    ...\NodeJS-ReignDesign-Test\WebApp-ReignDesign\Server.Jobs\Job.ManageNewHits\Job.Schedule.Config.js
+    ```
+    ```js
+    const schedule = require('node-schedule');
+
+    exports.getRule_JobManageNewHits= getRule_JobManageNewHits;
+
+    function getRule_JobManageNewHits(){
+      let rule = new schedule.RecurrenceRule();
+      //rule.hour = 0; // Hora en que se ejecutará, si está en cero, sólo aplica minutos y/o segundos...
+      //rule.minute = 0; // Minuto 0 de cada Hora...
+      rule.second = 0; // Segundo 0 (cero) de cada Minuto...
+      return rule;
+    };
+    ```
+    
   * WebApp-ReignDesign\Server.Jobs\Job.ManageNewHits\Job.Schedule.ManageNewHits.js:
     * Ejecutable del job.
     
     
 * #### REST y WebApplication Server: Estructura y Descripción de Directorios:
   
+![003-EstructuraDirectorios-02-Rest.JPG](https://github.com/jtrujilloh/NodeJS-ReignDesign-Test/blob/master/Imagenes/003-EstructuraDirectorios-02-Rest.JPG)
+  
   * WebApp-ReignDesign\Server.Rest:
     * Contiene el proyecto desarrollado como API Rest y WebApplication Server.
     
   * WebApp-ReignDesign\Server.Rest\Server.Services:
     * Contiene los proyectos desarrollado como módulos NodeJS, proveen la lógica de Negocio en forma modular.
-    
+
+![003-EstructuraDirectorios-03-ServiceModule.JPG](https://github.com/jtrujilloh/NodeJS-ReignDesign-Test/blob/master/Imagenes/003-EstructuraDirectorios-03-ServiceModule.JPG)
+
   * WebApp-ReignDesign\Server.Rest\Server.Services\Servicio.GestionPosts:
     * Contiene el módulo NodeJS de servicio de negocio que gestiona todo lo relacionado a la interacción y el comportamiento referente a un negocio específico (en este caso, el módulo gestiona los posts existentes en base de datos, módulo desarrollado con arquitectura de N-Capas orientado al dominio.
     
@@ -157,6 +181,8 @@ Proyecto NodeJS que se compone de tres soluciones interoperables entre sí, de m
   * WebApp-ReignDesign\Server.Rest\Server.Util:
     * Objetos de literales para el servidor NodeJS.
     
+![003-EstructuraDirectorios-04-WebApp.JPG](https://github.com/jtrujilloh/NodeJS-ReignDesign-Test/blob/master/Imagenes/003-EstructuraDirectorios-04-WebApp.JPG)
+
   * WebApp-ReignDesign\Server.Rest\webApp:
     * Contiene todos los objetos estáticos y dinámicos utilizados para renderizar la aplicación web.
   
@@ -170,6 +196,8 @@ Proyecto NodeJS que se compone de tres soluciones interoperables entre sí, de m
 
 
 * #### Ejecución de la Aplicación - Descripción de Archivos:
+
+![003-EstructuraDirectorios.JPG](https://github.com/jtrujilloh/NodeJS-ReignDesign-Test/blob/master/Imagenes/003-EstructuraDirectorios.JPG)
 
   * WebApp-ReignDesign\JOBS - Start.Automatic.bat:
     * Permite arrancar una instancia única de NodeJS, el cual ejecuta por separado, los jobs configurados para iniciar según programación de horario establecida, corriendo en una consola independiente.
@@ -215,9 +243,11 @@ Proyecto NodeJS que se compone de tres soluciones interoperables entre sí, de m
   
     * \WebApp-ReignDesign\Server.Jobs\Job.ManageNewHits\
       Este proyecto es un Job programable, el cual se puede ejecutar de forma independiente a la aplicación
+      
       ```bash
       C:\...> npm install --save
       ```
+      
       Este comando instalará todas las dependencias necesarias para poder ejecutar el Job.
       
       
@@ -226,7 +256,7 @@ Proyecto NodeJS que se compone de tres soluciones interoperables entre sí, de m
       ```bash
       C:\...> npm install --save
       ```
-    Este comando instalará todas las dependencias necesarias por el módulo de servicio de negocio.
+      Este comando instalará todas las dependencias necesarias por el módulo de servicio de negocio.
     
     
     * \WebApp-ReignDesign\Server.Rest\
@@ -234,6 +264,7 @@ Proyecto NodeJS que se compone de tres soluciones interoperables entre sí, de m
       ```bash
       C:\...> npm install --save
       ```
+      
       Este comando instalará todas las dependencias necesarias para poder ejecutar el servidor NodeJS.
 
 -------------------------------------------
